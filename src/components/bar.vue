@@ -4,7 +4,7 @@
       <p class="tag">Y轴列标签(List列表)<el-input v-model="yAxisLabels" class="empty" placeholder="Type:Value" onlyread></el-input></p>
       <p class="tag">Data数据(List列表)<el-input v-model="dataValues" class="empty"></el-input></p>
       <p class="tag">颜色(List列表，使用逗号分隔)<el-input v-model="barColors" class="empty" placeholder="例如：#ff0000,#00ff00,#0000ff"></el-input></p>
-      <p class="tag">提示信息<el-switch  style="margin-left: 10px;" v-model="tooltips"  @click="changeTool"/></p>
+      <p class="tag">提示信息<el-switch  style="margin-left: 10px;" v-model="tooltips"/></p>
       <el-select v-model="chartType" placeholder="选择图表类型" class="empty">
         <el-option label="柱状图" value="bar"></el-option>
         <el-option label="折线图" value="line"></el-option>
@@ -17,7 +17,7 @@
         <el-option label="类目" value="category"></el-option>
         <el-option label="数值" value="value"></el-option>
       </el-select></p>
-      <p class="tag">显示图例<el-switch style="margin-left: 10px;" v-model="showLegend" @click="changeLegend"/></p>
+      <p class="tag">显示图例<el-switch style="margin-left: 10px;" v-model="showLegend"/></p>
       <p class="tag">图例位置<el-select v-model="legendPosition" placeholder="选择图例位置" class="empty">
         <el-option label="顶部" value="top"></el-option>
         <el-option label="底部" value="bottom"></el-option>
@@ -171,14 +171,6 @@
       sendOptions(){
         this.generateOption();
         this.$emit('listen', this.option);
-      },
-      changeTool() {
-        this.tooltips = !this.tooltips;
-        console.log('Tool tips status:', this.tooltips);
-      },
-      changeLegend() {
-        this.showLegend = !this.showLegend;
-        console.log('Legend status:', this.showLegend);
       }
     },
     mounted() {
