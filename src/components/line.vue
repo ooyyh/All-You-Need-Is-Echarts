@@ -99,6 +99,18 @@
       };
     },
     methods: {
+      addAlpha(color, alpha) {
+        // Handle hex colors and add alpha
+        if (color.startsWith('#')) {
+          const hex = color.replace('#', '');
+          if (hex.length === 6) {
+            return color + alpha;
+          } else if (hex.length === 3) {
+            return '#' + hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + alpha;
+          }
+        }
+        return color;
+      },
       generateOption() {
         const xAxisData = this.xAxisLabels.split(',');
         const data = this.dataValues.split(',').map(Number);
@@ -163,8 +175,8 @@
                   x2: 0,
                   y2: 1,
                   colorStops: [
-                    { offset: 0, color: this.lineColor + '80' },
-                    { offset: 1, color: this.lineColor + '00' }
+                    { offset: 0, color: this.addAlpha(this.lineColor, '80') },
+                    { offset: 1, color: this.addAlpha(this.lineColor, '00') }
                   ]
                 }
               } : null

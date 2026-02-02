@@ -173,12 +173,12 @@
         this.$emit('listen', this.option);
       },
       changeTool() {
-        this.tooltips == !this.tooltips;
+        this.tooltips = !this.tooltips;
         console.log('Tool tips status:', this.tooltips);
       },
       changeLegend() {
-        this.legendPosition == !this.legendPosition;
-        console.log('Tool tips status:', this.legendPosition);
+        this.showLegend = !this.showLegend;
+        console.log('Legend status:', this.showLegend);
       }
     },
     mounted() {

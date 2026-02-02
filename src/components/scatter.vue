@@ -93,6 +93,18 @@
       };
     },
     methods: {
+      addAlpha(color, alpha) {
+        // Handle hex colors and add alpha
+        if (color.startsWith('#')) {
+          const hex = color.replace('#', '');
+          if (hex.length === 6) {
+            return color + alpha;
+          } else if (hex.length === 3) {
+            return '#' + hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + alpha;
+          }
+        }
+        return color;
+      },
       generateOption() {
         const xValues = this.xData.split(',').map(Number);
         const yValues = this.yData.split(',').map(Number);
@@ -151,7 +163,7 @@
               itemStyle: {
                 color: this.pointColor,
                 shadowBlur: 10,
-                shadowColor: this.pointColor + '80',
+                shadowColor: this.addAlpha(this.pointColor, '80'),
                 shadowOffsetY: 2
               }
             }
