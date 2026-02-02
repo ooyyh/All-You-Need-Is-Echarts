@@ -30,15 +30,86 @@
   </template>
   
   <style scoped>
+  #app {
+    color: #e6edf3;
+    font-family: 'Courier New', monospace;
+  }
+  
   .run {
-    margin-left: 45%;
+    margin: 20px auto;
+    display: block;
+    background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+    border: none;
+    color: #0a0e27;
+    font-weight: bold;
+    padding: 12px 40px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
+    transition: all 0.3s ease;
   }
+  
+  .run:hover {
+    box-shadow: 0 6px 25px rgba(0, 217, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
   .tag {
-    padding: 10px;
+    padding: 10px 15px;
+    color: #7ee787;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
+  
   .empty {
     margin: 10px;
-    width: 200px;
+    width: 250px;
+  }
+  
+  :deep(.el-input__wrapper) {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    box-shadow: none;
+    transition: all 0.3s ease;
+  }
+  
+  :deep(.el-input__wrapper:hover) {
+    border-color: #00d9ff;
+  }
+  
+  :deep(.el-input__wrapper.is-focus) {
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+  
+  :deep(.el-input__inner) {
+    color: #e6edf3;
+  }
+  
+  :deep(.el-select) {
+    --el-select-input-focus-border-color: #00ff88;
+  }
+  
+  :deep(.el-select .el-input__wrapper) {
+    background-color: #161b22;
+    border-color: #30363d;
+  }
+  
+  :deep(.el-select .el-input__inner) {
+    color: #e6edf3;
+  }
+  
+  :deep(.el-switch.is-checked .el-switch__core) {
+    background-color: #00ff88;
+    border-color: #00ff88;
+  }
+  
+  :deep(.el-switch__core) {
+    background-color: #30363d;
+    border-color: #30363d;
   }
   </style>
   
@@ -46,10 +117,10 @@
   export default {
     data() {
       return {
-        xAxisLabels: '', // X轴标签的输入
+        xAxisLabels: 'Mon,Tue,Wed,Thu,Fri,Sat,Sun', // X轴标签的输入
         yAxisLabels: '', // Y轴标签的输入
-        dataValues: '', // 数据值的输入
-        barColors: '', // 单个柱子颜色的输入
+        dataValues: '120,200,150,80,70,110,130', // 数据值的输入
+        barColors: '#00d9ff,#00e5ff,#00f0ff,#00f9ff,#00ff88,#7ee787,#a78bfa', // 单个柱子颜色的输入
         option: "", // 图表配置对象
         tooltips: false, // 提示信息开关
         chartType: 'bar', // 图表类型
@@ -109,6 +180,9 @@
         this.legendPosition == !this.legendPosition;
         console.log('Tool tips status:', this.legendPosition);
       }
+    },
+    mounted() {
+      this.sendOptions();
     }
   };
   </script>

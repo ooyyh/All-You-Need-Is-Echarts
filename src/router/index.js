@@ -13,6 +13,41 @@ const router = createRouter({
           path: '/bar',
           name: 'bar',
           component: () => import('../components/bar.vue')
+        },
+        {
+          path: '/line',
+          name: 'line',
+          component: () => import('../components/line.vue')
+        },
+        {
+          path: '/pie',
+          name: 'pie',
+          component: () => import('../components/pie.vue')
+        },
+        {
+          path: '/scatter',
+          name: 'scatter',
+          component: () => import('../components/scatter.vue')
+        },
+        {
+          path: '/radar',
+          name: 'radar',
+          component: () => import('../components/radar.vue')
+        },
+        {
+          path: '/gauge',
+          name: 'gauge',
+          component: () => import('../components/gauge.vue')
+        },
+        {
+          path: '/funnel',
+          name: 'funnel',
+          component: () => import('../components/funnel.vue')
+        },
+        {
+          path: '/heatmap',
+          name: 'heatmap',
+          component: () => import('../components/heatmap.vue')
         }
       ]
     }
